@@ -1,503 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Presentation</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You - Presentation</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
 
-        .container {
-            max-width: 600px;
-            width: 90%;
-            background: rgba(30, 30, 50, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 50px rgba(102, 126, 234, 0.2);
-            backdrop-filter: blur(15px);
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: slideUp 0.8s ease-out, glow 3s infinite alternate;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .container {
+      max-width: 600px; width: 90%;
+      background: rgba(30, 30, 50, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.3), 0 0 50px rgba(102,126,234,.2);
+      backdrop-filter: blur(15px);
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: slideUp .8s ease-out, glow 3s infinite alternate;
+      border: 1px solid rgba(255,255,255,.1);
+    }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-            animation: shimmer 2s infinite;
-            pointer-events: none;
-        }
+    .container::before{
+      content:''; position:absolute; top:-50%; left:-50%;
+      width:200%; height:200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,.03), transparent);
+      animation: shimmer 2s infinite; pointer-events:none;
+    }
 
-        .container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
-            animation: backgroundPulse 4s ease-in-out infinite;
-            pointer-events: none;
-        }
+    .container::after{
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(102,126,234,.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(118,75,162,.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(240,147,251,.05) 0%, transparent 50%);
+      animation: backgroundPulse 4s ease-in-out infinite; pointer-events:none;
+    }
 
-        .heart-icon {
-            font-size: 4rem;
-            color: #e74c3c;
-            margin-bottom: 20px;
-            animation: heartbeat 2s infinite;
-            display: inline-block;
-        }
+    .heart-icon{ font-size:4rem; color:#e74c3c; margin-bottom:20px; animation: heartbeat 2s infinite; display:inline-block; }
 
-        .main-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-out 0.3s both, textGlow 2s ease-in-out infinite alternate;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out 0.3s both, gradientShift 3s ease-in-out infinite;
-        }
+    .main-title{
+      font-size:2.5rem; font-weight:bold; color:#fff; margin-bottom:20px;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+      background-size:200% 200%;
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      animation: fadeInUp 1s ease-out .3s both, gradientShift 3s ease-in-out infinite;
+    }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #e8e8ff;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.5s both, bounce 2s ease-in-out 2s infinite;
-            text-shadow: 0 0 10px rgba(232, 232, 255, 0.3);
-        }
+    .subtitle{
+      font-size:1.2rem; color:#e8e8ff; margin-bottom:30px; line-height:1.6;
+      animation: fadeInUp 1s ease-out .5s both, bounce 2s ease-in-out 2s infinite;
+      text-shadow:0 0 10px rgba(232,232,255,.3);
+    }
 
-        .message {
-            font-size: 1.1rem;
-            color: #d0d0ff;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out 0.7s both, typewriter 3s ease-in-out 1.5s;
-            text-shadow: 0 0 5px rgba(208, 208, 255, 0.2);
-        }
+    .message{
+      font-size:1.1rem; color:#d0d0ff; line-height:1.8; margin-bottom:30px;
+      animation: fadeInUp 1s ease-out .7s both, typewriter 3s ease-in-out 1.5s;
+      text-shadow:0 0 5px rgba(208,208,255,.2);
+    }
 
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-            position: relative;
-        }
+    .highlight{ color:#e74c3c; font-weight:bold; position:relative; }
 
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
+    .floating-hearts{ position:absolute; width:100%; height:100%; pointer-events:none; overflow:hidden; }
+    .floating-heart{ position:absolute; color:rgba(231,76,60,.6); font-size:1.5rem; animation: float 4s infinite ease-in-out; }
+    .floating-heart:nth-child(1){ left:10%; animation-delay:0s; }
+    .floating-heart:nth-child(2){ left:85%; animation-delay:1s; }
+    .floating-heart:nth-child(3){ left:70%; animation-delay:2s; }
+    .floating-heart:nth-child(4){ left:20%; animation-delay:3s; }
+    .floating-heart:nth-child(5){ left:50%; animation-delay:.5s; }
+    .floating-heart:nth-child(6){ left:30%; animation-delay:2.5s; }
+    .floating-heart:nth-child(7){ left:90%; animation-delay:1.5s; }
+    .floating-heart:nth-child(8){ left:60%; animation-delay:3.5s; }
 
-        .floating-heart {
-            position: absolute;
-            color: rgba(231, 76, 60, 0.6);
-            font-size: 1.5rem;
-            animation: float 4s infinite ease-in-out;
-        }
+    .appreciation-box{
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color:#fff; padding:25px; border-radius:15px; margin:20px 0;
+      animation: fadeInUp 1s ease-out .9s both;
+      box-shadow:0 10px 25px rgba(240,147,251,.3);
+    }
+    .thank-you-text{ font-size:1.3rem; font-weight:bold; margin-bottom:10px; }
+    .love-message{ font-size:1rem; opacity:1; color:#fff; font-weight:500; text-shadow:0 0 15px rgba(255,255,255,.4); }
+    .sparkles{ display:inline-block; animation: sparkle 2s infinite; margin:0 10px; }
 
-        .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .floating-heart:nth-child(2) { left: 85%; animation-delay: 1s; }
-        .floating-heart:nth-child(3) { left: 70%; animation-delay: 2s; }
-        .floating-heart:nth-child(4) { left: 20%; animation-delay: 3s; }
-        .floating-heart:nth-child(5) { left: 50%; animation-delay: 0.5s; }
-        .floating-heart:nth-child(6) { left: 30%; animation-delay: 2.5s; }
-        .floating-heart:nth-child(7) { left: 90%; animation-delay: 1.5s; }
-        .floating-heart:nth-child(8) { left: 60%; animation-delay: 3.5s; }
+    .footer-message{
+      font-size:.9rem; color:#b8b8ff; margin-top:30px; font-style:italic;
+      animation: fadeInUp 1s ease-out 1.1s both, pulse 3s ease-in-out 3s infinite;
+      text-shadow:0 0 8px rgba(184,184,255,.3);
+    }
 
-        .appreciation-box {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            animation: fadeInUp 1s ease-out 0.9s both;
-            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
-        }
+    .star-particle{ position:absolute; color:#ffeb3b; font-size:.8rem; pointer-events:none; animation: starfall 3s linear infinite; }
+    .star-particle:nth-child(1){ left:5%; animation-delay:0s; }
+    .star-particle:nth-child(2){ left:15%; animation-delay:.5s; }
+    .star-particle:nth-child(3){ left:35%; animation-delay:1s; }
+    .star-particle:nth-child(4){ left:55%; animation-delay:1.5s; }
+    .star-particle:nth-child(5){ left:75%; animation-delay:2s; }
+    .star-particle:nth-child(6){ left:95%; animation-delay:2.5s; }
 
-        .thank-you-text {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .presenters-section{
+      margin:30px 0; padding:25px;
+      background: linear-gradient(135deg, rgba(102,126,234,.2), rgba(118,75,162,.2));
+      border-radius:15px; border:1px solid rgba(255,255,255,.1);
+      animation: fadeInUp 1s ease-out .8s both, glow 4s ease-in-out infinite alternate;
+      backdrop-filter: blur(10px);
+    }
 
-        .love-message {
-            font-size: 1rem;
-            opacity: 1;
-            color: #ffffff;
-            font-weight: 500;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
+    .presenters-title{
+      font-size:1.1rem; color:#e8e8ff; margin-bottom:20px; font-weight:600;
+      text-transform:uppercase; letter-spacing:2px; text-align:center; animation:pulse 2s ease-in-out infinite;
+    }
 
-        .sparkles {
-            display: inline-block;
-            animation: sparkle 2s infinite;
-            margin: 0 10px;
-        }
+    .presenters-container{
+      display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap;
+    }
 
-        .footer-message {
-            font-size: 0.9rem;
-            color: #b8b8ff;
-            margin-top: 30px;
-            font-style: italic;
-            animation: fadeInUp 1s ease-out 1.1s both, pulse 3s ease-in-out 3s infinite;
-            text-shadow: 0 0 8px rgba(184, 184, 255, 0.3);
-        }
+    .presenter{ display:flex; flex-direction:column; align-items:center; animation:bounceIn 1s ease-out 1.2s both; transition: transform .3s ease; }
+    .presenter:hover .presenter-avatar{ transform:scale(1.1); filter: drop-shadow(0 0 25px rgba(255,255,255,.6)); border-color: rgba(255,255,255,.6); }
+    .presenter:first-child{ animation-delay:1.2s; }
+    .presenter:last-child{ animation-delay:1.4s; }
 
-        .star-particle {
-            position: absolute;
-            color: #ffeb3b;
-            font-size: 0.8rem;
-            pointer-events: none;
-            animation: starfall 3s linear infinite;
-        }
+    .presenter-avatar{
+      width:80px; height:80px; border-radius:50%; margin-bottom:15px;
+      animation: heartbeat 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(255,255,255,.4));
+      border:3px solid rgba(255,255,255,.3);
+      object-fit:cover; transition: all .3s ease;
+    }
 
-        .star-particle:nth-child(1) { left: 5%; animation-delay: 0s; }
-        .star-particle:nth-child(2) { left: 15%; animation-delay: 0.5s; }
-        .star-particle:nth-child(3) { left: 35%; animation-delay: 1s; }
-        .star-particle:nth-child(4) { left: 55%; animation-delay: 1.5s; }
-        .star-particle:nth-child(5) { left: 75%; animation-delay: 2s; }
-        .star-particle:nth-child(6) { left: 95%; animation-delay: 2.5s; }
+    .presenter-avatar.placeholder{
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color:#fff;
+    }
 
-        /* Animations */
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    .presenter-name{
+      font-size:1.3rem; font-weight:bold; color:#fff;
+      text-shadow:0 0 15px rgba(255,255,255,.5);
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+      background-size:200% 200%;
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    .presenter-divider{ font-size:2rem; color:#e8e8ff; font-weight:bold; animation: rotate 4s linear infinite; opacity:.7; }
 
-        @keyframes heartbeat {
-            0%, 50%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); filter: drop-shadow(0 0 10px #e74c3c); }
-        }
+    /* Animations */
+    @keyframes slideUp{ from{ transform:translateY(50px); opacity:0; } to{ transform:translateY(0); opacity:1; } }
+    @keyframes fadeInUp{ from{ transform:translateY(30px); opacity:0; } to{ transform:translateY(0); opacity:1; } }
+    @keyframes heartbeat{ 0%,50%,100%{ transform:scale(1); } 25%{ transform:scale(1.2); filter:drop-shadow(0 0 10px #e74c3c);} }
+    @keyframes float{ 0%,100%{ transform:translateY(0) rotate(0); opacity:.6; } 25%{ transform:translateY(-20px) rotate(5deg); opacity:.8; } 50%{ transform:translateY(-10px) rotate(-5deg); opacity:.4; } 75%{ transform:translateY(-15px) rotate(3deg); opacity:.9; } }
+    @keyframes shimmer{ 0%{ transform:translateX(-100%) translateY(-100%) rotate(45deg);} 100%{ transform:translateX(100%) translateY(100%) rotate(45deg);} }
+    @keyframes sparkle{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.3; transform:scale(1.5);} }
+    @keyframes glow{ 0%{ box-shadow:0 20px 40px rgba(0,0,0,.3), 0 0 50px rgba(102,126,234,.2);} 100%{ box-shadow:0 25px 50px rgba(0,0,0,.4), 0 0 80px rgba(102,126,234,.4);} }
+    @keyframes gradientShift{ 0%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } 100%{ background-position:0% 50%; } }
+    @keyframes bounce{ 0%,20%,50%,80%,100%{ transform:translateY(0);} 40%{ transform:translateY(-10px);} 60%{ transform:translateY(-5px);} }
+    @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.8; transform:scale(1.02);} }
+    @keyframes typewriter{ 0%{opacity:0;} 50%{opacity:.5;} 100%{opacity:1;} }
+    @keyframes backgroundPulse{ 0%,100%{opacity:.3;} 50%{opacity:.6;} }
+    @keyframes starfall{
+      0%{ transform:translateY(-20px) translateX(0) rotate(0); opacity:0; }
+      10%{ opacity:1; } 90%{ opacity:1; }
+      100%{ transform:translateY(400px) translateX(100px) rotate(360deg); opacity:0; }
+    }
+    @keyframes bounceIn{
+      0%{ opacity:0; transform:scale(.3) translateY(50px); }
+      50%{ opacity:1; transform:scale(1.05); }
+      70%{ transform:scale(.9); }
+      100%{ opacity:1; transform:scale(1); }
+    }
+    @keyframes rotate{ 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-            25% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
-            50% { transform: translateY(-10px) rotate(-5deg); opacity: 0.4; }
-            75% { transform: translateY(-15px) rotate(3deg); opacity: 0.9; }
-        }
+    /* Mobile */
+    @media (max-width:768px){
+      .container{ width:95%; padding:30px 20px; }
+      .main-title{ font-size:2rem; }
+      .heart-icon{ font-size:3rem; }
+      .subtitle{ font-size:1.1rem; }
+      .message{ font-size:1rem; }
+      .thank-you-text{ font-size:1.1rem; }
+    }
+    @media (max-width:480px){
+      .container{ padding:25px 15px; }
+      .main-title{ font-size:1.8rem; }
+      .heart-icon{ font-size:2.5rem; }
+    }
 
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.5); }
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 50px rgba(102, 126, 234, 0.2); }
-            100% { box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 80px rgba(102, 126, 234, 0.4); }
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
-        }
-
-        @keyframes typewriter {
-            0% { opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes backgroundPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        @keyframes starfall {
-            0% { 
-                transform: translateY(-20px) translateX(0px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(400px) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes rotateHue {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 30px 20px;
-            }
-
-            .main-title {
-                font-size: 2rem;
-            }
-
-            .heart-icon {
-                font-size: 3rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .message {
-                font-size: 1rem;
-            }
-
-            .thank-you-text {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 25px 15px;
-            }
-
-            .main-title {
-                font-size: 1.8rem;
-            }
-
-            .heart-icon {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    /* ===== moved overrides (were showing as text) ===== */
+    .presenters-container { gap: 20px; }
+    .presenter-avatar { width: 70px; height: 70px; }
+    .presenter-avatar.placeholder { font-size: 2rem; }
+    .presenter-name { font-size: 1.1rem; }
+    .presenter-divider { font-size: 1.5rem; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="floating-hearts">
-            <div class="floating-heart">❤️</div>
-            <div class="floating-heart">💕</div>
-            <div class="floating-heart">💖</div>
-            <div class="floating-heart">💗</div>
-            <div class="floating-heart">💝</div>
-            <div class="floating-heart">💘</div>
-            <div class="floating-heart">💙</div>
-            <div class="floating-heart">💜</div>
-        </div>
-
-        <div class="star-particle">⭐</div>
-        <div class="star-particle">✨</div>
-        <div class="star-particle">🌟</div>
-        <div class="star-particle">⭐</div>
-        <div class="star-particle">✨</div>
-        <div class="star-particle">🌟</div>
-
-        <div class="heart-icon">❤️</div>
-        
-        <h1 class="main-title">Thank You!</h1>
-        
-        <p class="subtitle">For being such an amazing audience</p>
-        
-        <div class="message">
-            We truly appreciate everyone who took the time to listen to our presentation today. 
-            Your attention and engagement mean the world to us!
-        </div>
-
-        <div class="appreciation-box">
-            <div class="thank-you-text">
-                <span class="sparkles">✨</span> Although we don't have vouchers to offer <span class="sparkles">✨</span>
-            </div>
-            <div class="love-message">
-                We have something much more valuable - our <span class="highlight">big love</span> and genuine appreciation for each and every one of you!
-            </div>
-        </div>
-
-        <div class="footer-message">
-            Your presence made our presentation complete. Thank you for being wonderful! 🌟
-        </div>
+  <div class="container">
+    <div class="floating-hearts">
+      <div class="floating-heart">❤️</div>
+      <div class="floating-heart">💕</div>
+      <div class="floating-heart">💖</div>
+      <div class="floating-heart">💗</div>
+      <div class="floating-heart">💝</div>
+      <div class="floating-heart">💘</div>
+      <div class="floating-heart">💙</div>
+      <div class="floating-heart">💜</div>
     </div>
 
-    <script>
-        // Add some interactive sparkle effects on click
-        document.addEventListener('click', function(e) {
-            createSparkle(e.pageX, e.pageY);
-            createRipple(e.pageX, e.pageY);
-        });
+    <div class="star-particle">⭐</div>
+    <div class="star-particle">✨</div>
+    <div class="star-particle">🌟</div>
+    <div class="star-particle">⭐</div>
+    <div class="star-particle">✨</div>
+    <div class="star-particle">🌟</div>
 
-        function createSparkle(x, y) {
-            const sparkle = document.createElement('div');
-            sparkle.innerHTML = ['✨', '⭐', '🌟', '💫'][Math.floor(Math.random() * 4)];
-            sparkle.style.position = 'fixed';
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.pointerEvents = 'none';
-            sparkle.style.fontSize = '1.5rem';
-            sparkle.style.zIndex = '1000';
-            sparkle.style.animation = 'sparkleEffect 1s ease-out forwards';
-            
-            document.body.appendChild(sparkle);
-            
-            setTimeout(() => {
-                sparkle.remove();
-            }, 1000);
-        }
+    <div class="heart-icon">❤️</div>
+    <h1 class="main-title">Thank You!</h1>
+    <p class="subtitle">For being such an amazing audience</p>
 
-        function createRipple(x, y) {
-            const ripple = document.createElement('div');
-            ripple.style.position = 'fixed';
-            ripple.style.left = (x - 25) + 'px';
-            ripple.style.top = (y - 25) + 'px';
-            ripple.style.width = '50px';
-            ripple.style.height = '50px';
-            ripple.style.borderRadius = '50%';
-            ripple.style.border = '2px solid rgba(102, 126, 234, 0.6)';
-            ripple.style.pointerEvents = 'none';
-            ripple.style.zIndex = '999';
-            ripple.style.animation = 'rippleEffect 0.8s ease-out forwards';
-            
-            document.body.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 800);
-        }
+    <div class="message">
+      We truly appreciate everyone who took the time to listen to our presentation today.
+      Your attention and engagement don't just mean the world to us - you've filled our hearts with joy,
+      inspired us beyond words, and reminded us why we love sharing knowledge with amazing people like you! 💖
+    </div>
 
-        // Add sparkle animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes sparkleEffect {
-                0% {
-                    opacity: 1;
-                    transform: scale(0) rotate(0deg);
-                }
-                50% {
-                    opacity: 1;
-                    transform: scale(1.2) rotate(180deg);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) rotate(360deg);
-                }
-            }
-            
-            @keyframes rippleEffect {
-                0% {
-                    opacity: 1;
-                    transform: scale(0);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(4);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+    <div class="presenters-section">
+      <div class="presenters-title">Presented by</div>
+      <div class="presenters-container">
+        <div class="presenter">
+          <img src="./Cody.jpg" alt="Cody" class="presenter-avatar"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="presenter-avatar placeholder" style="display:none;">👨‍💻</div>
+          <div class="presenter-name">Cody</div>
+        </div>
 
-        // Add a subtle parallax effect to floating hearts
-        document.addEventListener('mousemove', function(e) {
-            const hearts = document.querySelectorAll('.floating-heart');
-            const stars = document.querySelectorAll('.star-particle');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            hearts.forEach((heart, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = (mouseX - 0.5) * speed;
-                const y = (mouseY - 0.5) * speed;
-                heart.style.transform = `translate(${x}px, ${y}px)`;
-            });
-            
-            stars.forEach((star, index) => {
-                const speed = (index + 1) * 0.3;
-                const x = (mouseX - 0.5) * speed * 2;
-                const y = (mouseY - 0.5) * speed * 2;
-                star.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
+        <div class="presenter-divider">×</div>
 
-        // Auto-generate floating particles periodically
-        setInterval(() => {
-            if(Math.random() > 0.7) {
-                createRandomParticle();
-            }
-        }, 2000);
+        <div class="presenter">
+          <img src="./Dhruvil.png" alt="Dhruvil" class="presenter-avatar"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="presenter-avatar placeholder" style="display:none;">👨‍💼</div>
+          <div class="presenter-name">Dhruvil</div>
+        </div>
+      </div>
+    </div>
 
-        function createRandomParticle() {
-            const particle = document.createElement('div');
-            const emojis = ['💫', '⭐', '✨', '🌟', '💎', '🔮'];
-            particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-            particle.style.position = 'fixed';
-            particle.style.left = Math.random() * window.innerWidth + 'px';
-            particle.style.top = '-50px';
-            particle.style.pointerEvents = 'none';
-            particle.style.fontSize = '1rem';
-            particle.style.zIndex = '998';
-            particle.style.animation = `starfall ${3 + Math.random() * 2}s linear forwards`;
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 5000);
-        }
-    </script>
+    <div class="appreciation-box">
+      <div class="thank-you-text">
+        <span class="sparkles">✨</span> Although we don't have vouchers to offer <span class="sparkles">✨</span>
+      </div>
+      <div class="love-message">
+        We have something much more valuable - our <span class="highlight">big love</span> and genuine appreciation for each and every one of you!
+      </div>
+    </div>
+
+    <div class="footer-message">
+      Your presence made our presentation complete. Thank you for being wonderful! 🌟
+    </div>
+  </div>
+
+  <script>
+    // Click effects
+    document.addEventListener('click', function(e){
+      createSparkle(e.pageX, e.pageY);
+      createRipple(e.pageX, e.pageY);
+    });
+
+    function createSparkle(x,y){
+      const el=document.createElement('div');
+      el.innerHTML=['✨','⭐','🌟','💫'][Math.floor(Math.random()*4)];
+      Object.assign(el.style,{
+        position:'fixed', left:x+'px', top:y+'px', pointerEvents:'none',
+        fontSize:'1.5rem', zIndex:1000, animation:'sparkleEffect 1s ease-out forwards'
+      });
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),1000);
+    }
+
+    function createRipple(x,y){
+      const el=document.createElement('div');
+      Object.assign(el.style,{
+        position:'fixed', left:(x-25)+'px', top:(y-25)+'px', width:'50px', height:'50px',
+        borderRadius:'50%', border:'2px solid rgba(102,126,234,.6)', pointerEvents:'none',
+        zIndex:999, animation:'rippleEffect .8s ease-out forwards'
+      });
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),800);
+    }
+
+    // add keyframes for sparkle/ripple
+    const style=document.createElement('style');
+    style.textContent=`
+      @keyframes sparkleEffect {
+        0%{ opacity:1; transform:scale(0) rotate(0deg); }
+        50%{ opacity:1; transform:scale(1.2) rotate(180deg); }
+        100%{ opacity:0; transform:scale(0) rotate(360deg); }
+      }
+      @keyframes rippleEffect {
+        0%{ opacity:1; transform:scale(0); }
+        100%{ opacity:0; transform:scale(4); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Subtle parallax
+    document.addEventListener('mousemove', function(e){
+      const hearts=document.querySelectorAll('.floating-heart');
+      const stars=document.querySelectorAll('.star-particle');
+      const mx=e.clientX/window.innerWidth, my=e.clientY/window.innerHeight;
+      hearts.forEach((h,i)=>{ const s=(i+1)*0.5; h.style.transform=`translate(${(mx-.5)*s}px, ${(my-.5)*s}px)`; });
+      stars.forEach((s,i)=>{ const sp=(i+1)*0.3; s.style.transform=`translate(${(mx-.5)*sp*2}px, ${(my-.5)*sp*2}px)`; });
+    });
+
+    // Random particles
+    setInterval(()=>{ if(Math.random()>0.7) createRandomParticle(); },2000);
+    function createRandomParticle(){
+      const p=document.createElement('div');
+      const emojis=['💫','⭐','✨','🌟','💎','🔮'];
+      p.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+      Object.assign(p.style,{
+        position:'fixed', left:Math.random()*window.innerWidth+'px', top:'-50px',
+        pointerEvents:'none', fontSize:'1rem', zIndex:998,
+        animation:`starfall ${3+Math.random()*2}s linear forwards`
+      });
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),5000);
+    }
+  </script>
 </body>
 </html>
